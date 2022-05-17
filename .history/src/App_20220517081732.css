@@ -42,7 +42,6 @@
 	height: 100vh;
 	display: flex;
 	overflow: hidden;
-	align-items: center;
 	flex-direction: column;
 }
 
@@ -73,7 +72,3 @@ body {
 }
 
 /* End  */
-
-.white {
-	color: white;
-}
