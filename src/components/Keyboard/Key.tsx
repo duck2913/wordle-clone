@@ -13,10 +13,13 @@ function Key({ value }: Props) {
 		dispatch(addToBoard(value.toUpperCase()));
 	}
 
+	
+
 	return (
-		<span className={clasess.key} onClick={chooseLetterHandler}>
-			{value}
-		</span>
+			<span className={clasess.key} onClick={chooseLetterHandler}>
+				{value}
+			</span>
+		
 	);
 }
 
