@@ -1,12 +1,16 @@
 import clasess from "./Row.module.css";
+import { useDispatch } from "react-redux";
+import { addToBoard } from "../../store/BoardSlice";
 
 interface Props {
 	value: string;
 }
 
 function Key({ value }: Props) {
+	const dispatch = useDispatch();
+
 	function chooseLetterHandler() {
-		console.log(value);
+		dispatch(addToBoard(value.toUpperCase()));
 	}
 
 	return (

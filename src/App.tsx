@@ -9,7 +9,6 @@ const rows = ["q w e r t y u i o p", "a s d f g h j k l", "z x c v b n m"];
 
 function App() {
 	const board = useSelector((state: rootState) => state.board.board);
-	console.log(board);
 	return (
 		<div className="App">
 			<Heading />
