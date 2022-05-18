@@ -1,0 +1,7 @@
+.keyboard {
+	display: flex;
+	flex-direction: column;
+	justify-self: center;
+	align-items: center;
+	gap: 1rem;
+}
