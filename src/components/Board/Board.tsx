@@ -9,7 +9,7 @@ function Board({ board }: Props) {
 	return (
 		<div className={classes.board}>
 			{board.map((value, idx) => {
-				return <Square value={value} />;
+				return <Square value={value} idx={idx} key={idx} />;
 			})}
 		</div>
 	);

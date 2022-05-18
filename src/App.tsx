@@ -1,20 +1,15 @@
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import "./App.css";
 import Board from "./components/Board/Board";
 import Heading from "./components/Heading/Heading";
 import Keyboard from "./components/Keyboard/Keyboard";
+import { rootState } from "./store/interface";
+
+const rows = ["q w e r t y u i o p", "a s d f g h j k l", "z x c v b n m"];
 
 function App() {
-	//prettier-ignore
-	const [board, setBoard] = useState<string[]>([
-        "a","b","c","","",
-        "","","","","",
-        "a","","","","",
-        "","d","","","",
-        "","","","g","",
-        "","","","","f",
-    ]);
-	const rows = ["q w e r t y u i o p", "a s d f g h j k l", "z x c v b n m Back"];
+	const board = useSelector((state: rootState) => state.board.board);
+	console.log(board);
 	return (
 		<div className="App">
 			<Heading />
