@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 //prettier-ignore
 const initialState = {
     board:
-        [
+    [
         "","","","","",
         "","","","","",
         "","","","","",
@@ -12,6 +12,9 @@ const initialState = {
         "", "", "", "", "",],
     currentIdx: -1,
     needToValidate: false,
+    validateRow: 0,
+    colors: [],
+    secretWord: "HELLO",
 }
 
 export const boardSlice = createSlice({
@@ -19,6 +22,7 @@ export const boardSlice = createSlice({
 	initialState,
 	reducers: {
 		addToBoard: (state, action) => {
+			if (state.currentIdx === 29) return;
 			if (!state.needToValidate) {
 				state.currentIdx++;
 				state.board[state.currentIdx] = action.payload;
@@ -35,8 +39,22 @@ export const boardSlice = createSlice({
 			state.currentIdx--;
 		},
 		validate: (state) => {
-			// valide here
+			//guard clause for pre
+			if (!state.needToValidate) return;
+			if (state.validateRow === 6) return; // preventing user enter till the 7th row
+			// set need to validate to false to continue adding character to the board-
 			state.needToValidate = false;
+			// valide logic
+			for (let index = 0; index < 5; index++) {
+				if (state.secretWord[index] === state.board[5 * state.validateRow + index]) {
+					state.colors.push("correct");
+				} else if (state.secretWord.includes(state.board[5 * state.validateRow + index])) {
+					state.colors.push("wrong-position");
+				} else {
+					state.colors.push("not-exist");
+				}
+			}
+			state.validateRow++;
 		},
 	},
 });
